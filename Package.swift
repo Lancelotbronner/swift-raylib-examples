@@ -52,7 +52,19 @@ let package = Package(
 		.example(.textures, "Sprite Animation", [
 			.copy("scarfy.png")
 		], ["LICENSE.md"]),
-		
+
+		// Text Module
+		.example(.text, "Raylib Fonts", [
+			.copy("alagard.png"),
+			.copy("alpha_beta.png"),
+			.copy("jupiter_crash.png"),
+			.copy("mecha.png"),
+			.copy("pixantiqua.png"),
+			.copy("pixelplay.png"),
+			.copy("romulus.png"),
+			.copy("setback.png"),
+		]),
+
 		// Classic Games
 		.classic("Arkanoid"),
 //		.classic("Platformer"),
@@ -114,4 +126,5 @@ enum RaylibModule: String {
 	case core = "Core"
 	case shapes = "Shapes"
 	case textures = "Textures"
+	case text = "Text"
 }
