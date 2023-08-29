@@ -1,4 +1,4 @@
-import Raylib
+import RaylibKit
 
 @main struct SpritesheetExample: Applet {
 	let ANIMATION_SPEED_RANGE: ClosedRange<UInt> = 1 ... 15

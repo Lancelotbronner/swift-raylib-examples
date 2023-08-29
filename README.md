@@ -4,39 +4,35 @@ As always contributions are welcome, feel free to send new examples or translate
 
 ## Table of Contents
 
-### 🧱 Core
-
-- [2D Camera](#2d-camera)
-- [2D Camera Mouse Zoom](#2d-camera-mouse-zoom)
-- [2D Camera Platformer](#2d-camera-platformer)
-- [3D First Person](#3d-first-person)
-- [Basic Window](#basic-window)
-- [Drop Files](#drop-files)
-- [Input Keys](#input-keys)
-- [Input Mouse](#input-mouse)
-- [Input Mouse Wheel](#input-mouse-wheel)
-- [Letterboxed Window](#letterboxed-window)
-- [Scissor Test](#scissor-test)
-
-### 🔺 Shapes
-
-- [Basic Shapes](#basic-shapes)
-- [Bouncing Ball](#bouncing-ball)
-- [Color Palette](#color-palette)
-- [Following Eyes](#following-eyes)
-
-### 🖼 Textures
-
-- [Atlas](#atlas)
-- [Blend Modes](#blend-mode)
-- [Image Generation](#image-generation)
-- [Logo Raylib](#logo-raylib)
-- [Sprite Animation](#sprite-animation)
-
-### 👾 Classics
-
-- [Arkanoid](#arkanoid)
-- [Snake](#snake)
+- 🧱 Core
+    - [2D Camera](#2d-camera)
+    - [2D Camera Mouse Zoom](#2d-camera-mouse-zoom)
+    - [2D Camera Platformer](#2d-camera-platformer)
+    - [3D First Person](#3d-first-person)
+    - [Basic Window](#basic-window)
+    - [Drop Files](#drop-files)
+    - [Input Keys](#input-keys)
+    - [Input Mouse](#input-mouse)
+    - [Input Mouse Wheel](#input-mouse-wheel)
+    - [Letterboxed Window](#letterboxed-window)
+    - [Scissor Test](#scissor-test)
+- 🔺 Shapes
+    - [Basic Shapes](#basic-shapes)
+    - [Bouncing Ball](#bouncing-ball)
+    - [Color Palette](#color-palette)
+    - [Following Eyes](#following-eyes)
+- 🖼 Textures
+	- [Atlas](#atlas)
+	- [Blend Modes](#blend-mode)
+    - [Image Generation](#image-generation)
+    - [Logo Raylib](#logo-raylib)
+    - [Sprite Animation](#sprite-animation)
+- 🔊 Audio
+	- [Module Playing](#module-playing)
+- 👾 Classics
+    - [Arkanoid](#arkanoid)
+    - [Platformer](#platformer)
+    - [Snake](#snake)
 
 ## 🧱 Category: Core
 
@@ -124,7 +120,7 @@ Written by ![C] [ray], translated by ![Swift] [Lancelot]
 
 ![Screenshot of the example](Assets/Screenshots/following-eyes.png)
 
-### 🖼 Category: Textures
+## 🖼 Category: Textures
 
 Examples using raylib image functionality like texture drawing, image manipulation and image generation.
 
@@ -146,7 +142,15 @@ Written by ![C] [Karlo Licudine], translated by ![Swift] [Lancelot]
 
 ![Screenshot of the example](Assets/Screenshots/blend-modes.png)
 
-### 👾 Category: Classic Games
+## 🔊 Category: Audio
+
+### [Module Playing](Sources/Audio/Module%20Playing/App.swift)
+
+Written by ![C] [Ray], translated by ![Swift] [Lancelot]
+
+![Screenshot of the example](Assets/Screenshots/blend-modes.png)
+
+## 👾 Category: Classic Games
 
 Classic games implemented using raylib!
 

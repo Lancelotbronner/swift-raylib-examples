@@ -1,4 +1,4 @@
-import Raylib
+import RaylibKit
 
 @main struct SpritesheetExample: Applet {
 	let sprite: Texture

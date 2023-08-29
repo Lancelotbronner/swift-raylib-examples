@@ -11,10 +11,8 @@ let package = Package(
 		.macOS(.v12),
 	],
 	dependencies: [
-		
 		// Wrappers
-		.package(name: "Raylib", path: "../swift-raylib"),
-		
+		.package(name: "RaylibKit", path: "../swift-raylib"),
 	],
 	targets: [
 		
@@ -39,30 +37,23 @@ let package = Package(
 		
 		// Textures Module
 		.example(.textures, "Atlas", [
-			.copy("scarfy.png")
-		], ["LICENSE.md"]),
+			.copy("scarfy.png"),
+		]),
 		.example(.textures, "Blend Modes", [
 			.copy("background.png"),
 			.copy("foreground.png"),
-		], ["LICENSE.md"]),
+		]),
 		.example(.textures, "Image Generation"),
 		.example(.textures, "Logo Raylib", [
-			.copy("logo.png")
+			.copy("logo.png"),
 		]),
 		.example(.textures, "Sprite Animation", [
-			.copy("scarfy.png")
-		], ["LICENSE.md"]),
+			.copy("scarfy.png"),
+		]),
 
-		// Text Module
-		.example(.text, "Raylib Fonts", [
-			.copy("alagard.png"),
-			.copy("alpha_beta.png"),
-			.copy("jupiter_crash.png"),
-			.copy("mecha.png"),
-			.copy("pixantiqua.png"),
-			.copy("pixelplay.png"),
-			.copy("romulus.png"),
-			.copy("setback.png"),
+		// Audio Module
+		.example(.audio, "Module Playing", [
+			.copy("mini1111.xm"),
 		]),
 
 		// Classic Games
@@ -79,14 +70,16 @@ let package = Package(
 //MARK: - Templates
 
 extension Target {
-	static func example(_ module: RaylibModule, _ name: String, _ resources: [Resource]? = nil, _ exclude: [String]? = nil) -> Target {
+	static func example(_ module: RaylibModule, _ name: String, _ resources: [Resource]? = nil, _ exclude: [String] = []) -> Target {
+		var exclude = exclude
+		exclude.append("LICENSE.md")
 		let target = Target.executableTarget(
 			name: "\(module.rawValue) - \(name)",
 			dependencies: [
-				.product(name: "SwiftRaylib", package: "Raylib"),
+				.product(name: "RaylibKit", package: "RaylibKit"),
 			],
 			path: "Sources/\(module.rawValue)/\(name)",
-			exclude: exclude ?? [],
+			exclude: exclude,
 			resources: resources)
 		return target
 	}
@@ -95,7 +88,7 @@ extension Target {
 		let target = Target.executableTarget(
 			name: "Classic Game - \(name)",
 			dependencies: [
-				.product(name: "SwiftRaylib", package: "Raylib"),
+				.product(name: "RaylibKit", package: "RaylibKit"),
 			],
 			path: "Sources/Classics/\(name)",
 			resources: resources)
@@ -106,7 +99,7 @@ extension Target {
 		let target = Target.executableTarget(
 			name: "Game - \(name)",
 			dependencies: [
-				.product(name: "SwiftRaylib", package: "Raylib"),
+				.product(name: "RaylibKit", package: "RaylibKit"),
 			],
 			path: "Sources/Games/\(name)",
 			resources: [])
@@ -126,5 +119,5 @@ enum RaylibModule: String {
 	case core = "Core"
 	case shapes = "Shapes"
 	case textures = "Textures"
-	case text = "Text"
+	case audio = "Audio"
 }

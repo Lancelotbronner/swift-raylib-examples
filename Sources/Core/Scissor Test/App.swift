@@ -1,4 +1,4 @@
-import Raylib
+import RaylibKit
 
 @main struct Scisor: Applet {
 	var area = Rectangle(at: 0, 0, size: 200, 200)

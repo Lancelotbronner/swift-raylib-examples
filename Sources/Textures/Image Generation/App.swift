@@ -1,4 +1,4 @@
-import Raylib
+import RaylibKit
 
 @main struct ImageGeneration: Applet {
 	var index = 0

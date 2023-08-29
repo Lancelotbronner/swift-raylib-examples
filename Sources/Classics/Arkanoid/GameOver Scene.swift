@@ -5,7 +5,7 @@
 //  Created by Christophe Bronner on 2021-12-27.
 //
 
-import Raylib
+import RaylibKit
 
 //MARK: - Game Over Scene
 

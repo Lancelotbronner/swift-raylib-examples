@@ -5,7 +5,7 @@
 //  Created by Christophe Bronner on 2021-09-06.
 //
 
-import Raylib
+import RaylibKit
 
 @main struct BasicShapes: Applet {
 	var rotation: Float = 0.0

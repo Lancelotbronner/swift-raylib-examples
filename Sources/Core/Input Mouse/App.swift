@@ -5,7 +5,7 @@
 //  Created by Christophe Bronner on 2021-09-02.
 //
 
-import Raylib
+import RaylibKit
 
 @main struct InputMouse: Applet {
 	var position = Vector2f(-100)

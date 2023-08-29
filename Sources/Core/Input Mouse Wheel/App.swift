@@ -5,7 +5,7 @@
 //  Created by Christophe Bronner on 2021-09-02.
 //
 
-import Raylib
+import RaylibKit
 
 @main struct InputMouseWheel: Applet {
 	var y: Float

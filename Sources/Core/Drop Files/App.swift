@@ -5,7 +5,7 @@
 //  Created by Christophe Bronner on 2021-12-26.
 //
 
-import Raylib
+import RaylibKit
 
 @main struct DropFiles: Applet {
 	

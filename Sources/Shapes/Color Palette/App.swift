@@ -1,4 +1,4 @@
-import Raylib
+import RaylibKit
 
 @main struct ColorPalette: Applet {
 	var palette = [

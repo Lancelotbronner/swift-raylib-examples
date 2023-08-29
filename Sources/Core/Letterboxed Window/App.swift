@@ -5,7 +5,7 @@
 //  Created by Christophe Bronner on 2021-11-30.
 //
 
-import Raylib
+import RaylibKit
 
 @main struct LetterboxedWindow: Applet {
 	
