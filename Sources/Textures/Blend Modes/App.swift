@@ -8,25 +8,20 @@ import RaylibKit
 	var index = 0
 	
 	let modes: [BlendItem] = [
-		BlendItem("ALPHA", Blend.alpha),
-		BlendItem("ADDITIVE", Blend.additive),
-		BlendItem("MULTIPLIED", Blend.multiplied),
-		BlendItem("ADD COLORS", Blend.add),
-		BlendItem("SUBTRACT COLORS", Blend.subtract),
-		BlendItem("ALPHA PREMULTIPLIED", Blend.premultiplied),
+		BlendItem("ALPHA", BlendMode.alpha),
+		BlendItem("ADDITIVE", BlendMode.additive),
+		BlendItem("MULTIPLIED", BlendMode.multiplied),
+		BlendItem("ADD COLORS", BlendMode.addColors),
+		BlendItem("SUBTRACT COLORS", BlendMode.subtractColors),
+		BlendItem("ALPHA PREMULTIPLIED", BlendMode.alphaPremultiply),
 	]
 	
 	init() throws {
 		Window.create(800, by: 450, title: "Example - Textures - Blend Modes")
 		Application.target(fps: 60)
-		
-		background = try Filesystem
-			.file(at: "background.png", from: .module)
-			.loadAsTexture()
-		
-		foreground = try Filesystem
-			.file(at: "foreground.png", from: .module)
-			.loadAsTexture()
+
+		background = try Texture(at: "background.png", bundle: .module)
+		foreground = try Texture(at: "foreground.png", bundle: .module)
 	}
 	
 	mutating func update() {
@@ -53,9 +48,9 @@ import RaylibKit
 
 struct BlendItem {
 	let name: String
-	let mode: Blend
+	let mode: BlendMode
 
-	init(_ name: String, _ mode: Blend) {
+	init(_ name: String, _ mode: BlendMode) {
 		self.name = name
 		self.mode = mode
 	}

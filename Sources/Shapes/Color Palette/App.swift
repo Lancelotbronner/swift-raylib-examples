@@ -53,7 +53,7 @@ struct PaletteItem {
 	
 	let name: String
 	let color: Color
-	let position: Vector2f
+	let position: Vector2
 	var hovered = false
 	
 	var frame: Rectangle {
@@ -68,7 +68,7 @@ struct PaletteItem {
 		let column = (PaletteItem.index % 7).toFloat
 		let x = 20 + PaletteItem.size * column + 10 * column
 		let y = 80 + PaletteItem.size * row + 10 * row
-		position = Vector2f(x, y)
+		position = Vector2(x, y)
 
 		Self.index += 1
 	}

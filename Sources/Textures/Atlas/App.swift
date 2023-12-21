@@ -11,10 +11,8 @@ import RaylibKit
 		Window.create(800, by: 450, title: "Example - Textures - Atlas (texture source and destination rectangles)")
 		Application.target(fps: 60)
 		
-		sprite = try Filesystem
-			.file(at: "scarfy.png", from: .module)
-			.loadAsTexture()
-		spritesheet = Spritesheet(of: 1, by: 6, within: sprite.size.toInt)
+		sprite = try Texture(at: "scarfy.png", bundle: .module)
+		spritesheet = Spritesheet(of: 1, by: 6, within: Point2(sprite.size))
 
 		source = spritesheet.frame(of: 0, 0)
 		destination = Rectangle(at: Window.position / 2, size: source.size * 2)

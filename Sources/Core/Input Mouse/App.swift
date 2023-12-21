@@ -8,7 +8,7 @@
 import RaylibKit
 
 @main struct InputMouse: Applet {
-	var position = Vector2f(-100)
+	var position = Vector2(-100)
 	var color = Color.darkBlue
 	
 	init() {

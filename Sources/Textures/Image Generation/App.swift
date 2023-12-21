@@ -11,11 +11,11 @@ import RaylibKit
 
 		textures = [
 			TextureItem("VERTICAL GRADIENT", 560, .raywhite,
-						Image.gradientV(size: Window.width, by: Window.height, from: .red, to: .blue)),
+						Image.verticalGradient(size: Window.width, by: Window.height, from: .red, to: .blue)),
 			TextureItem("HORIZONTAL GRADIENT", 540, .raywhite,
-						Image.gradientH(size: Window.width, by: Window.height, from: .red, to: .blue)),
+						Image.horizontalGradient(size: Window.width, by: Window.height, from: .red, to: .blue)),
 			TextureItem("RADIAL GRADIENT", 580, .lightGray,
-						Image.gradientRadial(size: Window.width, by: Window.height, from: .white, to: .black)),
+						Image.radialGradient(size: Window.width, by: Window.height, from: .white, to: .black)),
 			TextureItem("CHECKED", 680, .raywhite,
 						Image.checked(size: Window.width, by: Window.height, tiles: 32, 32, colors: .maroon, .darkBlue)),
 			TextureItem("WHITE NOISE", 650, .red,

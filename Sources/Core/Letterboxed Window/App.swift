@@ -10,9 +10,9 @@ import RaylibKit
 @main struct LetterboxedWindow: Applet {
 	
 	var target: RenderTexture
-	var virtualMouse = Vector2f.zero
-	var transformation = Vector2f.zero
-	let game = Vector2f(640, 480)
+	var virtualMouse = Vector2.zero
+	var transformation = Vector2.zero
+	let game = Vector2(640, 480)
 	var scale: Float = 1
 	var colors: [Color]
 	

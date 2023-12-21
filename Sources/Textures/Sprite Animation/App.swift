@@ -6,7 +6,7 @@ import RaylibKit
 	let sprite: Texture
 	let spritesheet: Spritesheet
 	
-	var position: Vector2f
+	var position: Vector2
 	var frame: Rectangle
 	var timeline = Timeline()
 	var index = 0
@@ -16,11 +16,9 @@ import RaylibKit
 		Window.create(800, by: 450, title: "Example - Textures - Sprite Animation")
 		Application.target(fps: 60)
 		
-		sprite = try Filesystem
-			.file(at: "scarfy.png", from: .module)
-			.loadAsTexture()
-		spritesheet = Spritesheet(of: 1, by: 6, within: sprite.size.toInt)
-		
+		sprite = try Texture(at: "scarfy.png", bundle: .module)
+		spritesheet = Spritesheet(of: 1, by: 6, within: Point2(sprite.size))
+
 		position = Vector2(350, 280)
 		frame = spritesheet.frame(of: 0, 0)
 	}
@@ -34,7 +32,7 @@ import RaylibKit
 				index = 0
 			}
 			
-			frame = spritesheet.frame(of: index, 0)
+			frame = spritesheet.frame(of: index.toInt32, 0)
 		}
 
 		if Keyboard.right.isPressed {

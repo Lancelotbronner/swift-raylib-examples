@@ -19,12 +19,12 @@ struct GameplayScene: Scene {
 	var ball: Ball
 	var bricks: [[Brick]]
 	var numberOfBricks: Int
-	let sizeOfBrick: Vector2f
+	let sizeOfBrick: Vector2
 	
 	//MARK: Initialization
 	
 	init() {
-		sizeOfBrick = Vector2f(Window.width.toFloat / Configuration.bricksPerLine.toFloat, Window.height.toFloat / 3 / Configuration.linesOfBricks.toFloat)
+		sizeOfBrick = Vector2(Window.width.toFloat / Configuration.bricksPerLine.toFloat, Window.height.toFloat / 3 / Configuration.linesOfBricks.toFloat)
 		
 		player = Player(
 			body: Rectangle(at: Window.width.toFloat / 2, Window.height.toFloat * 7 / 8, size: Window.width.toFloat / 10, Window.height.toFloat / 25),
@@ -46,7 +46,7 @@ struct GameplayScene: Scene {
 			
 			for j in 0 ..< Configuration.bricksPerLine {
 				let positionX = j.toFloat * sizeOfBrick.x
-				line.append(Brick(position: Vector2f(positionX, positionY), isActive: true))
+				line.append(Brick(position: Vector2(positionX, positionY), isActive: true))
 			}
 			bricks.append(line)
 		}
@@ -79,7 +79,7 @@ struct GameplayScene: Scene {
 		
 		if !ball.isActive && Keyboard.space.isPressed {
 			ball.isActive = true
-			ball.speed = Vector2f(0, -5)
+			ball.speed = Vector2(0, -5)
 		}
 		
 		// Ball: Movement Logic
@@ -87,7 +87,7 @@ struct GameplayScene: Scene {
 		if ball.isActive {
 			ball.body.position += ball.speed
 		} else {
-			ball.body.position = Vector2f(player.body.center.x, Window.height.toFloat * 7 / 8 - 30)
+			ball.body.position = Vector2(player.body.center.x, Window.height.toFloat * 7 / 8 - 30)
 		}
 		
 		// Collision Logic: Ball & Wall

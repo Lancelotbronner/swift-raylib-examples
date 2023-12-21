@@ -59,14 +59,14 @@ import RaylibKit
 
 struct Column {
 	let height: Float
-	let position: Vector3f
+	let position: Vector3
 	let color: Color
 	
 	static var random: Column {
 		let height = Random.between(1, and: 12).toFloat
 		return Column(
 			height: height,
-			position: Vector3f(x: .random(in: -15 ..< 15), y: height / 2, z: .random(in: -15 ..< 15)),
+			position: Vector3(x: .random(in: -15 ..< 15), y: height / 2, z: .random(in: -15 ..< 15)),
 			color: .random)
 	}
 }

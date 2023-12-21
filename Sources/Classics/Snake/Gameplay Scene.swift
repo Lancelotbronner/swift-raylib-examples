@@ -1,48 +1,38 @@
 import RaylibKit
 
-//MARK: - Gameplay Scene
-
 struct GameplayScene: Scene {
 	
-	//MARK: Properties
-	
 	private let area: Rectangle
-	private let grid: Vector2i
+	private let grid: Point2
 	
 	private var timeline = Timeline()
-	private var segments: [Vector2f] = []
-	private var speed = Vector2f.zero
-	private var food: Vector2f?
+	private var segments: [Vector2] = []
+	private var speed = Vector2.zero
+	private var food: Vector2?
 	
 	private var score = 0
 	private var isPaused = false
 	
-	//MARK: Computed Properties
-	
-	private var head: Vector2f {
+	init() {
+		let offset = Point2(Window.size) % Point2(Constants.sizeOfTile)
+		area = Rectangle(at: Vector2(offset / 2), size: Window.size - Vector2(offset))
+		grid = Point2(Window.size / Constants.sizeOfTile)
+
+		segments.reserveCapacity(256)
+		segments.append(Vector2(grid / 2) * Constants.sizeOfTile + area.position)
+	}
+
+	private var head: Vector2 {
 		get { segments[0] }
 		set { segments[0] = newValue }
 	}
-	
-	private var body: DropFirstSequence<[Vector2f]> {
+
+	private var body: DropFirstSequence<[Vector2]> {
 		segments.dropFirst()
 	}
 	
-	//MARK: Initialization
-	
-	init() {
-		let offset = (Window.size.toInt % Constants.sizeOfTile.toInt).toFloat
-		area = Rectangle(at: offset / 2, size: Window.size - offset)
-		grid = (Window.size / Constants.sizeOfTile).toInt
-		
-		segments.reserveCapacity(256)
-		segments.append((grid / 2).toFloat * Constants.sizeOfTile + area.position)
-	}
-	
-	//MARK: Update
-	
 	mutating func update() -> SceneAction {
-		
+
 		// Pause Controls
 		
 		if Keyboard.p.isPressed {
@@ -72,7 +62,7 @@ struct GameplayScene: Scene {
 		}
 		
 		if hasMovement {
-			let newSpeed = Vector2f(horizontal, vertical) * Constants.sizeOfTile
+			let newSpeed = Vector2(horizontal, vertical) * Constants.sizeOfTile
 			var apply = true
 			
 			if segments.count > 1, head + newSpeed == segments[1] {
@@ -113,8 +103,8 @@ struct GameplayScene: Scene {
 		// Food generation
 
 		while food == nil {
-			let positionInTiles = Vector2i(.random(in: 0 ..< grid.x), .random(in: 0 ..< grid.y))
-			let position = positionInTiles.toFloat * Constants.sizeOfTile
+			let positionInTiles = Point2(.random(in: 0 ..< grid.x), .random(in: 0 ..< grid.y))
+			let position = Vector2(positionInTiles) * Constants.sizeOfTile
 			guard !segments.contains(position) else { continue }
 			food = position + area.position
 		}
@@ -130,19 +120,19 @@ struct GameplayScene: Scene {
 		return .continue
 	}
 	
-	//MARK: Drawing
-	
 	func draw() {
 		// Draw grid lines
 		
 		Renderer.color = .lightGray
 		
 		for i in 0 ..< grid.x + 1 {
-			Renderer2D.line(from: i.toFloat * Constants.sizeOfTile.x + area.x, area.y, to: i.toFloat * Constants.sizeOfTile.y + area.x, area.bottom.y)
+			let x = i.toFloat * Constants.sizeOfTile.x + area.x
+			Renderer2D.line(from: x, area.y, to: x, area.bottom.y)
 		}
 		
 		for i in 0 ..< grid.y + 1 {
-			Renderer2D.line(from: area.x, i.toFloat * Constants.sizeOfTile.y + area.y, to: area.right.x, i.toFloat * Constants.sizeOfTile.y + area.y)
+			let y = i.toFloat * Constants.sizeOfTile.y + area.y
+			Renderer2D.line(from: area.x, y, to: area.right.x, y)
 		}
 		
 		// Draw snake

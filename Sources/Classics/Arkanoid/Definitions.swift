@@ -31,11 +31,11 @@ struct Player {
 
 struct Ball {
 	var body: Circle
-	var speed: Vector2f
+	var speed: Vector2
 	var isActive: Bool
 }
 
 struct Brick {
-	var position: Vector2f
+	var position: Vector2
 	var isActive: Bool
 }

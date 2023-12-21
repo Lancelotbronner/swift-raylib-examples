@@ -10,8 +10,8 @@ import RaylibKit
 @main struct BouncingBall: Applet {
 	let BALL_RADIUS = 20
 	
-	var position: Vector2f
-	var speed: Vector2f
+	var position: Vector2
+	var speed: Vector2
 	var paused = false
 	var blink = Timeline()
 	
@@ -20,7 +20,7 @@ import RaylibKit
 		Application.target(fps: 30)
 		
 		position = Window.size / 2
-		speed = Vector2f(5, 4)
+		speed = Vector2(5, 4)
 	}
 	
 	mutating func update() {

@@ -9,7 +9,7 @@ import RaylibKit
 
 	init() throws {
 		//TODO: Review View/Window flags
-		WindowFlags.msaa4x.configure()
+		ConfigurationFlags.msaa4x.configure()
 
 		Window.create(800, by: 450, title: "Example - Audio - Module Playing")
 		Application.target(fps: 60)

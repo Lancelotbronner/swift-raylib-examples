@@ -12,10 +12,10 @@ import Darwin
 	let EYE_RADIUS: Float = 80
 	let IRIS_RADIUS: Float = 24
 	
-	let leftEye: Vector2f
-	var leftIris: Vector2f
-	let rightEye: Vector2f
-	var rightIris: Vector2f
+	let leftEye: Vector2
+	var leftIris: Vector2
+	let rightEye: Vector2
+	var rightIris: Vector2
 
 	init() {
 		Window.create(800, by: 450, title: "Example - Shapes - Following Eyes")

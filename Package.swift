@@ -6,13 +6,12 @@ import PackageDescription
 //MARK: - Package
 
 let package = Package(
-	name: "Swift Raylib Examples",
+	name: "swift-raylib-examples",
 	platforms: [
 		.macOS(.v12),
 	],
 	dependencies: [
-		// Wrappers
-		.package(name: "RaylibKit", path: "../swift-raylib"),
+		.package(url: "https://github.com/Lancelotbronner/swift-raylib", branch: "main"),
 	],
 	targets: [
 		
@@ -69,15 +68,19 @@ let package = Package(
 
 //MARK: - Templates
 
+extension Target.Dependency {
+	static let raylib = Self.product(name: "RaylibKit", package: "swift-raylib")
+}
+
 extension Target {
-	static func example(_ module: RaylibModule, _ name: String, _ resources: [Resource]? = nil, _ exclude: [String] = []) -> Target {
+	static func example(_ module: RaylibModule, _ name: String, _ resources: [Resource]? = nil, _ exclude: [String] = [], license: Bool = false) -> Target {
 		var exclude = exclude
-		exclude.append("LICENSE.md")
+		if license {
+			exclude.append("LICENSE.md")
+		}
 		let target = Target.executableTarget(
 			name: "\(module.rawValue) - \(name)",
-			dependencies: [
-				.product(name: "RaylibKit", package: "RaylibKit"),
-			],
+			dependencies: [.raylib],
 			path: "Sources/\(module.rawValue)/\(name)",
 			exclude: exclude,
 			resources: resources)
@@ -87,9 +90,7 @@ extension Target {
 	static func classic(_ name: String, _ resources: [Resource]? = nil) -> Target {
 		let target = Target.executableTarget(
 			name: "Classic Game - \(name)",
-			dependencies: [
-				.product(name: "RaylibKit", package: "RaylibKit"),
-			],
+			dependencies: [.raylib],
 			path: "Sources/Classics/\(name)",
 			resources: resources)
 		return target
@@ -98,9 +99,7 @@ extension Target {
 	static func game(_ name: String, resources: Bool = false, assets: Bool = false) -> Target {
 		let target = Target.executableTarget(
 			name: "Game - \(name)",
-			dependencies: [
-				.product(name: "RaylibKit", package: "RaylibKit"),
-			],
+			dependencies: [.raylib],
 			path: "Sources/Games/\(name)",
 			resources: [])
 		if resources {

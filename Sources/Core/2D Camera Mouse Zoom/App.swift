@@ -59,8 +59,8 @@ struct Building {
 	var color: Color
 	
 	static func random(offset: Float) -> Building {
-		let size = Vector2f(.random(in: 50 ... 200), .random(in: 100 ... 800))
-		let position = Vector2f(-6000 + offset, Window.height.toFloat - 130 - size.y)
+		let size = Vector2(.random(in: 50 ... 200), .random(in: 100 ... 800))
+		let position = Vector2(-6000 + offset, Window.height.toFloat - 130 - size.y)
 		let color = Color.rgb(.random(in: 200 ... 240), .random(in: 200 ... 240), .random(in: 200 ... 250))
 		return Building(rect: Rectangle(at: position, size: size), color: color)
 	}

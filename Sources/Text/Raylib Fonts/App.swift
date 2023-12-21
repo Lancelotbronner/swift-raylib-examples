@@ -41,7 +41,7 @@ struct FontMetadata {
 	let font: Font
 	let message: String
 	let spacing: Float
-	let position: Vector2f
+	let position: Vector2
 	let color: Color
 
 	init(_ name: Path, spacing: Float, color: Color, message: String) {
@@ -52,7 +52,7 @@ struct FontMetadata {
 
 		let width = Window.size.x - font.measure(message, size: font.size * 2, spacing: spacing).x
 		let height = 60 + font.size + FontMetadata.offset
-		position = Vector2f(width / 2, height.toFloat)
+		position = Vector2(width / 2, height.toFloat)
 		FontMetadata.offset += 45
 	}
 

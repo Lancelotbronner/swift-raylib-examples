@@ -10,7 +10,7 @@ import RaylibKit
 //MARK: - Application
 
 @main struct ExamplePlatformer2D: Applet {
-	let startingPosition = Vector2f(400, 280)
+	let startingPosition = Vector2(400, 280)
 	
 	var camera: Camera2D
 	var player: Player
@@ -79,7 +79,7 @@ import RaylibKit
 
 let GRAVITY: Float = 400
 
-let map = Vector2f(1000, 200)
+let map = Vector2(1000, 200)
 
 let environment = [
 	Rectangle(at: 0, 400, size: 1000, 600),
@@ -94,11 +94,11 @@ struct Player {
 	let JUMP_SPEED: Float = 350
 	let MOVEMENT_SPEED: Float = 200
 	
-	var position: Vector2f
+	var position: Vector2
 	var speed: Float
 	var canJump: Bool
 	
-	init(at position: Vector2f) {
+	init(at position: Vector2) {
 		self.position = position
 		speed = 0
 		canJump = true
@@ -174,7 +174,7 @@ enum CameraStyles {
 			camera.offset = Window.size / 2
 			camera.target = player.position
 			
-			var min = Vector2f(0)
+			var min = Vector2(0)
 			var max = map
 			
 			for obstacle in environment {
@@ -258,7 +258,7 @@ enum CameraStyles {
 	struct PushCameraStyle: CameraStyle {
 		let name = "Player push camera on getting too close to screen edge"
 		
-		private var bounds = Vector2f(0.2)
+		private var bounds = Vector2(0.2)
 		
 		func update(_ camera: inout Camera2D, for player: Player) {
 			let lowerBounds = (.one - bounds) / 2 * Window.size

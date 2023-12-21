@@ -8,7 +8,7 @@
 import RaylibKit
 
 @main struct InputKeyboard: Applet {
-	var position: Vector2f
+	var position: Vector2
 	
 	init() {
 		Window.create(800, by: 450, title: "Example - Core - Input Keys")
